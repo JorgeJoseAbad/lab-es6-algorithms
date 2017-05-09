@@ -1,29 +1,58 @@
-var ArrayFunctions = function (){};
+/*jshint esversion: 6*/
+
+
 
 // 1) Define a function that takes an array with numbers and prints all the elements of the array, separated by " --- "
 // ArrayFunctions.printSpecial([12, 33, 144, 122])
 // 12 -- 33 -- 144 -- 122
 
-ArrayFunctions.printSpecial = function (array) {
-  //return array.join(" --- ");
-  var array2=[];
-  var arrayString="";
-  for (i=0; i<array.length; i++){
+/*made with ES6*/
 
-    array2.push(array[i].toString());
-    if (i<array.length-1) {array2.push(" --- ");}
+class ArrayFunctions {
+  constructor() {
 
   }
 
-  for (j=0; j<array.length*2-1; j++){
-    arrayString=arrayString + array2[j];
+  static printSpecial(arr){
+    return arr.join(" --- ");
   }
 
-  array2.toString();
-  console.log(array2);
-  console.log(arrayString);
-  return arrayString;
-};
+  static doubleArray(array){
+    return array.map((number)=>number*2);
+  }
+
+  static superPower(array){
+    return array.reduce((sum,number,index)=>sum+(number*Math.pow(10,index)));
+  }
+
+}
+
+
+/* made with ES5
+
+var ArrayFunctions = function (){}
+
+  ArrayFunctions.printSpecial = function (array) {
+    //return array.join(" --- ");
+    var array2=[];
+    var arrayString="";
+    for (i=0; i<array.length; i++){
+
+      array2.push(array[i].toString());
+      if (i<array.length-1) {array2.push(" --- ");}
+
+    }
+
+    for (j=0; j<array.length*2-1; j++){
+      arrayString=arrayString + array2[j];
+    }
+
+    array2.toString();
+    console.log(array2);
+    console.log(arrayString);
+    return arrayString;
+  };
+
 
 
 
@@ -42,9 +71,6 @@ ArrayFunctions.doubleArray = function(array){
 
 
 
-
-
-
 // 3) Define a function that takes an array with numbers and returns the result of multiplying each element by ten to the power of the position it's in:
 // ArrayFunctions.superPower([1,2,3,4,5])
 // 54321
@@ -56,5 +82,5 @@ ArrayFunctions.superPower = function(array){
     return sum + (number * (Math.pow(10, index)));
   });
 };
-
+*/
 module.exports = ArrayFunctions;
