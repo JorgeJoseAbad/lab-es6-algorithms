@@ -1,7 +1,8 @@
 /*jshint esversion: 6*/
-var { expect }     = require("chai");
-var LetterSequence = require('../src/sequencer');
-
+let { expect }     = require("chai");
+let LetterSequence = require('../src/sequencer');
+//const letterSequence = new LetterSequence(); // los metodos estaticos solo se llaman con
+// el nombre de la clase expect(letterSequence.create... ) no funciona
 
 describe('LetterSequence', function() {
   describe('createSequence()', function() {
