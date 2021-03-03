@@ -7,7 +7,7 @@ let LetterSequence = require('../src/sequencer');
 describe('LetterSequence', function() {
   describe('createSequence()', function() {
     it('should return the sequence with the count of repetitions in between each character', function() {
-      expect(LetterSequence.createSequence("aabbccabbca")).to.equal("2a2b2ca2bca");
+      expect(LetterSequence.createSequence("aaabbccabbca")).to.equal("3a2b2ca2bca");
     });
 
     it('should only have a numbered sequence for repeats greater than 1', function(){

@@ -1,3 +1,4 @@
+/*jshint esversion: 6*/
 var { expect } = require('chai');
 var ArrayFunctions = require('../src/array-functions.js');
 
