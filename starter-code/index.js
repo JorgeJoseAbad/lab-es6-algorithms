@@ -12,7 +12,7 @@ class ArrayFunctions {
   constructor() {
 
   }
-
+ //metodos staticos, sólo de la clase no de un objeto instanciado
   static printSpecial(arr){
     return arr.join(" --- ");
   }
@@ -23,6 +23,54 @@ class ArrayFunctions {
 
   static superPower(array){
     return array.reduce((sum,number,index)=>sum+(number*Math.pow(10,index)));
+  }
+
+ //metodos al prototipo, accesibles
+  mergeSort(array) {
+    if(array.length < 2) { return array; }
+
+    let middle  = Math.floor(array.length / 2);
+    let left    = array.slice(0, middle);
+    let right   = array.slice(middle);
+
+    return this.sortHalves(this.mergeSort(left), this.mergeSort(right));
+  }
+
+  sortHalves(left, right) {
+    let array = [];
+
+    //pone el valor mas pequeño en array luego devuelve array, left y right
+    while(left.length && right.length) {
+      if(left[0] < right[0]) {
+        array.push(left.shift());
+      } else {
+        array.push(right.shift());
+      }
+    }
+    // array.slice() with no arguments is a trick to make a copy of the array
+    // .concat is to smash all of the arrays together
+    // ...maybe there's an ES6 way to do this?
+
+    //return array.concat(left.slice()).concat(right.slice()); //ES5
+
+    return [...array, ...left, ...right]; //ES6
+  }
+
+  bubbleSort(array) {
+      const length = array.length;
+      for (let i = (length - 1); i > 0; i--) {
+          // Number of passes
+          for (let j = (length - i); j > 0; j--) {
+              // Compare the adjacent positions
+              if (array[j] < array[j - 1]) {
+                  // Swap the numbers
+                  let tmp = array[j];
+                  array[j] = array[j - 1];
+                  array[j-1] = tmp;
+              }
+          }
+      }
+      return array;
   }
 
 }
@@ -89,3 +137,16 @@ let numbers = [12, 33, 144, 122];
 let newArray = ArrayFunctions.printSpecial(numbers);
 let twoArray = ArrayFunctions.doubleArray(numbers);
 let threeArray = ArrayFunctions.superPower(numbers);
+console.log(newArray);
+console.log(twoArray);
+console.log(threeArray);
+
+var arrayDos = [12, 15, 30, 100, 0, 3, 6, 5, 10, 7, 9, 3, 2, 11];
+
+let arraySort = new ArrayFunctions();
+let arrayMergeSorted = arraySort.mergeSort(arrayDos);
+let arrayMergeBubbled = arraySort.bubbleSort(arrayDos);
+
+console.log(arrayMergeSorted);
+
+console.log(arrayMergeBubbled);
